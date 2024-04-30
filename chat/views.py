@@ -4,7 +4,7 @@ from rest_framework import generics
 from rest_framework.permissions import IsAuthenticated
 
 from common.helper import create_cronjob, manage_periodic_task
-from .models import Message, Event, MessageSetting
+from .models import Message, Event, MessageSetting,RecurringMessage
 from .serializers import (
     MessageSerializer,
     EventSerializer,
@@ -120,6 +120,6 @@ class RecurringMessageListCreateView(generics.ListCreateAPIView):
     API view for listing and creating recurring messages.
     """
 
-    queryset = Event.objects.all()
+    queryset = RecurringMessage.objects.all()
     serializer_class = RecurringMessageSerializer
     permission_classes = [IsAuthenticated]
